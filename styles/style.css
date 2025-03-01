@@ -11,6 +11,287 @@
 */
 
 .page {
+  padding-block-start: 100px;
+  color: var(--accent-color, #000);
+  font-family: var(--main-font, 'Inter', sans-serif);
+  font-weight: var(--font-wght-card-text, 400);
+  background-color: var(--bg-color, #fff);
+  background-image: var(--bg-image, none);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  margin-block-end: 100px;
+  font-family: var(--accent-font, 'PressStart2P', fantasy);
+  text-transform: uppercase;
+}
+
+.page__header {
+  margin-block-end: 100px;
+}
+
+.page__title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title {
+  margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  margin-block-end: 20px;
+  line-height: 65px;
+}
+
+.header__subtitle {
+  margin-block-end: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 23px;
+}
+
+.main {
+  display: grid;
+  justify-items: center;
+  gap: 57px;
+  padding-block-end: 105px;
+}
+
+.cards-list {
+  display: grid;
+  gap: 52px;
+}
+
+.card {
+  margin-inline: auto;
+  border: 2px solid var(--text-color, #000000);
+  background: var(--page-background-color, #ffffff);
+  max-inline-size: 696px;
+}
+
+.card__title {
+  border-block-end: 2px solid var(--text-color, #000000);
+  padding: 3px 10px;
+  font-size: 18px;
+  line-height: normal;
+  font-variation-settings: "wght" var(--font-wght-card-title, 700);
+}
+
+.card__content {
+  display: grid;
+  gap: 27px;
+  border-block-start: 2px solid var(--text-color, #000000);
+  padding: 25px;
+}
+
+.card_img-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img-label {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.5;
+  color: var(--accent-color, #000000);
+  font-family: var(--accent-font-family, "PressStart2P", fantasy);
+  font-size: 14px;
+  line-height: 14px;
+  text-shadow: 0 0 1px var(--bg-color, #ffffff);
+  inset-inline-end: 13px;
+  inset-block-start: 24px;
+  mix-blend-mode: hard-light;
+}
+
+@supports ((-webkit-text-stroke: 1px var(--page-background-color, #ffffff)) or (text-stroke: 1px var(--page-background-color, #ffffff))) {
+  .card__img-label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--page-background-color, #ffffff);
+    text-stroke: 1px var(--page-background-color, #ffffff);
+  }
+}
+
+.card__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.filter-less-brighter {
+  filter: brightness(70%);
+}
+
+.filter-grayscale {
+  filter: grayscale(70%) brightness(70%);
+}
+
+.filter-multiple {
+  filter: contrast(115%) hue-rotate(320deg) saturate(180%) sepia(20%) brightness(70%);
+}
+
+.filter-hue-rotate_sepia {
+  filter: hue-rotate(300deg) sepia(30%) brightness(70%);
+}
+
+.filter-saturate {
+  filter: saturate(120%) brightness(60%) hue-rotate(300deg);
+}
+
+.filter-invert {
+  filter: invert(100%);
+}
+
+.filter-black-white {
+  filter: grayscale(90%) brightness(50%);
+}
+
+.filter-blur {
+  filter: blur(2px);
+}
+
+.card__interaction {
+  display: flex;
+  justify-content: end;
+  align-items: stretch;
+  gap: 5px;
+  padding: 0px 25px 25px 25px;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--text-color, #000);
+  padding: 12.5px 37px;
+  font-family: var(--accent-font, "PressStart2P", fantasy);
+  font-weight: 400;
+  font-size: 14px;
+  background: var(--bg-color, #fff);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--text-color, #000000);
+}
+
+.card__icon-button {
+  display: grid;
+  border: 2px solid transparent;
+  padding: 0;
+  background: transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--text-color, #000000);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button--save {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+}
+
+.button__text,
+.button__icon {
+  color: var(--button-text-color, #ffffff);
+  mix-blend-mode: difference;
+}
+
+.button__icon {
+  block-size: 21px;
+  inline-size: 21px;
+}
+
+.like-icon {
+  block-size: 36px;
+  inline-size: 39px;
+}
+
+.modal {
+  border: 2px solid var(--text-color, #000000);
+  padding: 25px 30px;
+  color: var(--text-color, #000000);
+  font-family: var(--page-accent-font-family, "PressStart2P", fantasy);
+  line-height: 1.5;
+  text-transform: uppercase;
+  background: var(--page-background-color, #ffffff);
+  max-inline-size: 355px;
+}
+
+.modal[open] {
+  display: grid;
+  /* Safari fix */
+  grid-template-rows: repeat(2, min-content);
+  gap: 30px;
+}
+
+.modal::backdrop {
+  opacity: 0.75;
+  background: var(--color-black, #000000);
+}
+
+.modal__content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal__icon {
+  flex-shrink: 0;
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.modal__button {
+  inline-size: 100%;
+}
+
+@media (width <=375px) {
+  .button--save {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button__icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+
+  .modal {
+    padding: 32px 42px;
+    max-inline-size: 340px;
+  }
 }
