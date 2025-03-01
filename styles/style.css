@@ -14,12 +14,12 @@
   padding-block-start: 100px;
   color: var(--accent-color, #000);
   font-family: var(--main-font, 'Inter', sans-serif);
-  font-weight: var(--font-wght-card-text, 400);
-  background-color: var(--bg-color, #fff);
-  background-image: var(--bg-image, none);
+  background-color: var(--background-color, #fff);
+  background-image: var(--background-image, none);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  font-variation-settings: "wght" var(--font-wght-card-text, 400);
   min-inline-size: 320px;
   min-block-size: 100dvb;
 }
@@ -38,38 +38,38 @@
 }
 
 .page__title {
-  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-size: 65px;
 }
 
 .header__title {
-  margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  margin-block-start: 128px;
   margin-block-end: 20px;
   line-height: 65px;
 }
 
 .header__subtitle {
-  margin-block-end: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
-  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  margin-block-end: 128px;
+  font-size: 23px;
   line-height: 23px;
 }
 
 .main {
   display: grid;
   justify-items: center;
-  gap: 57px;
+  gap: 47px;
   padding-block-end: 105px;
 }
 
 .cards-list {
   display: grid;
-  gap: 52px;
+  gap: 50px;
 }
 
 .card {
   margin-inline: auto;
-  border: 2px solid var(--text-color, #000000);
+  border: 3px solid var(--text-color, #000000);
   background: var(--page-background-color, #ffffff);
-  max-inline-size: 696px;
+  max-inline-size: 701px;
 }
 
 .card__title {
@@ -83,12 +83,15 @@
 .card__content {
   display: grid;
   gap: 27px;
-  border-block-start: 2px solid var(--text-color, #000000);
+  border-block-start: 4px solid var(--text-color, #000000);
   padding: 25px;
+  font-size: var(--main-font-size, 18px);
+  line-height: 117%;
 }
 
 .card_img-container {
   position: relative;
+  border: 1px solid var(--text-color, #000000);
   overflow: hidden;
 }
 
@@ -100,17 +103,17 @@
   font-family: var(--accent-font-family, "PressStart2P", fantasy);
   font-size: 14px;
   line-height: 14px;
-  text-shadow: 0 0 1px var(--bg-color, #ffffff);
-  inset-inline-end: 13px;
-  inset-block-start: 24px;
+  text-shadow: 0 0 1px var(--background-color, #ffffff);
+  inset-inline-end: 25px;
+  inset-block-start: 27px;
   mix-blend-mode: hard-light;
 }
 
-@supports ((-webkit-text-stroke: 1px var(--page-background-color, #ffffff)) or (text-stroke: 1px var(--page-background-color, #ffffff))) {
+@supports ((-webkit-text-stroke: 1px var(--background-color, #ffffff)) or (text-stroke: 1px var(--background-color, #ffffff))) {
   .card__img-label {
     text-shadow: none;
-    -webkit-text-stroke: 1px var(--page-background-color, #ffffff);
-    text-stroke: 1px var(--page-background-color, #ffffff);
+    -webkit-text-stroke: 1px var(--background-color, #ffffff);
+    text-stroke: 1px var(--background-color, #ffffff);
   }
 }
 
@@ -159,18 +162,19 @@
   justify-content: end;
   align-items: stretch;
   gap: 5px;
-  padding: 0px 25px 25px 25px;
+  padding: 0px 25px 23px 25px;
 }
 
 .button {
   position: relative;
   z-index: 1;
   border: 2px solid var(--text-color, #000);
-  padding: 12.5px 37px;
+  padding: 0px 35px;
   font-family: var(--accent-font, "PressStart2P", fantasy);
-  font-weight: 400;
+  font-weight: 150;
   font-size: 14px;
-  background: var(--bg-color, #fff);
+  line-height: 90%;
+  background: var(--background-color, #fff);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
   appearance: none;
@@ -196,6 +200,11 @@
 
 .card__icon-button:focus {
   outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--text-color, #000000);
+  transition: border-color 0.3s ease;
 }
 
 .button::before {
@@ -245,6 +254,7 @@
   padding: 25px 30px;
   color: var(--text-color, #000000);
   font-family: var(--page-accent-font-family, "PressStart2P", fantasy);
+  font-size: 14px;
   line-height: 1.5;
   text-transform: uppercase;
   background: var(--page-background-color, #ffffff);
@@ -277,7 +287,13 @@
 
 .modal__button {
   inline-size: 100%;
+  block-size: 38px;
 }
+
+.card__interaction:focus {
+  outline: none;
+}
+
 
 @media (width <=375px) {
   .button--save {
@@ -294,4 +310,29 @@
     padding: 32px 42px;
     max-inline-size: 340px;
   }
+
+  .page__title {
+    font-size: 49px;
+  }
+
+  .header__title {
+    margin-block-start: 110px;
+    margin-block-end: 7px;
+  }
+  
+  .header__subtitle {
+    margin-block-end: 110px;
+    font-size: 14px;
+  }
+
+  .card__content {
+    display: grid;
+    gap: 27px;
+    border-block-start: 4px solid var(--text-color, #000000);
+    padding: 28px 25px 26px 25px;
+    font-size: var(--main-font-size, 18px);
+    line-height: 117%;
+  }
+
+  
 }
