@@ -38,7 +38,7 @@
 }
 
 .page__title {
-  font-size: 65px;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
 .header__title {
@@ -49,14 +49,14 @@
 
 .header__subtitle {
   margin-block-end: 128px;
-  font-size: 23px;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 23px;
 }
 
 .main {
   display: grid;
   justify-items: center;
-  gap: 47px;
+  gap: 52px;
   padding-block-end: 105px;
 }
 
@@ -311,10 +311,6 @@
     max-inline-size: 340px;
   }
 
-  .page__title {
-    font-size: 49px;
-  }
-
   .header__title {
     margin-block-start: 110px;
     margin-block-end: 7px;
@@ -322,16 +318,15 @@
   
   .header__subtitle {
     margin-block-end: 110px;
-    font-size: 14px;
   }
 
   .card__content {
-    display: grid;
-    gap: 27px;
-    border-block-start: 4px solid var(--text-color, #000000);
     padding: 28px 25px 26px 25px;
-    font-size: var(--main-font-size, 18px);
-    line-height: 117%;
+  }
+
+  .card__img-label {
+    inset-inline-end: 10px;
+    inset-block-start: 23px;
   }
 
   
